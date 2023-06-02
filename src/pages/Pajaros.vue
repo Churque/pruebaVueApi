@@ -2,12 +2,22 @@
 <template>
     <div >
       <ul>
-        <div class="container" v-for="pajaro in pajaros" :key="pajaro.id">
-           <a> {{ pajaro.name.spanish }}</a>
-           <img :src="pajaro.images.main" alt="Pajaro" >
+        <div class="container" v-for="producto in productos" :key="producto.id">
+           <a> {{ producto.name }}</a>
+           <a> {{ producto.description }}</a>
+           <a> {{ producto.price }}</a>
+           <a type="Date"> {{ producto.createdAt }}</a>
+           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+           <div class="images" v-for="image in producto.images" :key="image">
+           <img :src="image" alt="Producto" >
+           </div>
+  </div>
+          </div>
         </div>
       </ul>
     </div>
+
   </template>
   
   <script>
@@ -16,7 +26,7 @@
   export default {
     data() {
       return {
-        pajaros: [],
+        productos: [],
       };
     },
     mounted() {
@@ -25,9 +35,9 @@
     methods: {
       fetchData() {
         axios
-          .get('https://aves.ninjas.cl/api/birds')
+          .get('http://54.163.208.73:8080/products')
           .then((result) => {
-            this.pajaros = result.data;
+            this.productos = result.data;
           })
           .catch((error) => {
             console.error(error);
@@ -38,12 +48,6 @@
   </script>
 
   <style >
-  .container{
-    border-radius: 50px;
-    background: #e0e0e0;
-    box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
-  }
 
   </style>
   
