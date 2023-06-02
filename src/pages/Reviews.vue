@@ -19,13 +19,20 @@
         </div>
       </div>
 
+
+
       <div class="container" v-for="review in reviews" :key="review._id">
         <a> {{ review._id }}</a>
-        <div class="btn-group d-flex justify-content-center">
-          <p>Nombre Reviewer: {{ review.user.name }}</p>
-          <p>Review: {{ review }}</p>
-        </div>
+          <div class="card" style="width: 18rem;">  
+           <img width="200" height="200" :src="review.user.photo" alt="Producto" >
+  <div class="card-body">
+    <h5 class="card-title">Nombre Reviewer: {{ review.user.name }}</h5>
+    <p class="card-text">{{ review.review }}</p>
+  </div>
+          </div>
       </div>
+
+
     </ul>
   </div>
 </template>

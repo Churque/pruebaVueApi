@@ -3,16 +3,17 @@
     <div >
       <ul>
         <div class="container" v-for="producto in productos" :key="producto.id">
-           <a> {{ producto.name }}</a>
-           <a> {{ producto.description }}</a>
-           <a> {{ producto.price }}</a>
-           <a type="Date"> {{ producto.createdAt }}</a>
-           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+          <div class="card" style="width: 18rem;">
            <div class="images" v-for="image in producto.images" :key="image">
-           <img :src="image" alt="Producto" >
-           </div>
+           <img width="200" height="200"  :src="image" alt="Producto" >
+          </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ producto.name }}</h5>
+    <p class="card-text">{{ producto.description }}</p>
+    <p class="card-text">{{ producto.price }}</p>
+    <p class="card-text">{{ producto.createdAt }}</p>
   </div>
+           
   <div class="btn-group d-flex justify-content-center">
             <button class="btn btn-sm btn-outline-secondary"> <RouterLink :to="`/Reviews/${producto._id}`">Detalles</RouterLink></button>
           </div>
