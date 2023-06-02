@@ -2,6 +2,7 @@
   <div>
     <ul>
       <div class="container" v-if="producto">
+        
         <a> {{ producto.name }}</a>
         <a> {{ producto.description }}</a>
         <a> {{ producto.price }}</a>
