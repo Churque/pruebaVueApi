@@ -13,6 +13,9 @@
            <img :src="image" alt="Producto" >
            </div>
   </div>
+  <div class="btn-group d-flex justify-content-center">
+            <button class="btn btn-sm btn-outline-secondary"> <RouterLink :to="`/${producto._id}`">Detalles</RouterLink></button>
+          </div>
           </div>
         </div>
       </ul>
