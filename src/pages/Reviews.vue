@@ -3,10 +3,7 @@
     <ul>
       <div class="container" v-if="producto">
         
-        <a> {{ producto.name }}</a>
-        <a> {{ producto.description }}</a>
-        <a> {{ producto.price }}</a>
-        <a type="Date"> {{ producto.createdAt }}</a>
+        <CartaProducto :producto="producto" />
         <div
           id="carouselExampleSlidesOnly"
           class="carousel slide"
@@ -40,8 +37,12 @@
 
 <script>
 import axios from "axios";
+import CartaProducto from '../components/CartaProducto.vue';
 
 export default {
+  components: {
+    CartaProducto,
+  },
   props: {
     id: {
       type: Number,

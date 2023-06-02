@@ -7,12 +7,7 @@
            <div class="images" v-for="image in producto.images" :key="image">
            <img width="200" height="200"  :src="image" alt="Producto" >
           </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ producto.name }}</h5>
-    <p class="card-text">{{ producto.description }}</p>
-    <p class="card-text">{{ producto.price }}</p>
-    <p class="card-text">{{ producto.createdAt }}</p>
-  </div>
+          <CartaProducto :producto="producto" />
            
   <div class="btn-group d-flex justify-content-center">
             <button class="btn btn-sm btn-outline-secondary"> <RouterLink :to="`/Reviews/${producto._id}`">Detalles</RouterLink></button>
@@ -26,8 +21,15 @@
   
   <script>
   import axios from 'axios';
+  import CartaProducto from '../components/CartaProducto.vue';
+  
   
   export default {
+    
+    
+  components: {
+    CartaProducto,
+  },
     data() {
       return {
         productos: [],
