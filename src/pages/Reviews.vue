@@ -14,7 +14,7 @@
            </div>
   </div>
   <div class="btn-group d-flex justify-content-center">
-            <button class="btn btn-sm btn-outline-secondary"> <RouterLink :to="`/Reviews/${producto._id}`">Detalles</RouterLink></button>
+            <button class="btn btn-sm btn-outline-secondary"> <RouterLink :to="`/${producto._id}`">Detalles</RouterLink></button>
           </div>
           </div>
         </div>
@@ -53,4 +53,3 @@
   <style >
 
   </style>
-  
