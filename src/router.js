@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 import PajarosDetalles from './pages/Pajaros';
 import Home from './pages/Images';
+import usuariosPagina from './pages/usuariosPagina'
 
 const routes = [
   {
@@ -14,6 +15,12 @@ const routes = [
     path: '/',
     component: Home,
   },
+  {
+    name:'usuariosReview',
+    path:'/usuariosReview/:id',
+    component: usuariosPagina,
+    props : true,
+  }
 ];
 
 const router = createRouter({
