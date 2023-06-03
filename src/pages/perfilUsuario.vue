@@ -7,9 +7,8 @@
   <p style="text-align: center;"> cantidad de reviews hechas por {{usuario.name}} es de {{reviews.length}} </p>
   
   <div v-for="review in reviews" :key="review._id">
+    <h4>{{ review.product.name }}</h4>
     <CartaModelo :modelo="review"  :imgLink="review.product.images[0]"></CartaModelo>
-    <h1>{{ review.product.name }}</h1>
-    <p> {{review.review}}</p>
   </div>
 
 </template>

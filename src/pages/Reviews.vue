@@ -1,26 +1,29 @@
 <template>
   <div>
     <ul>
-      <div class="container" v-if="producto">
-        <CartaModelo :modelo="producto" :imgLink="producto.images[0]" />
-      </div>
+      <h1>Autor publicacion</h1>
       <CartaModelo
         :modelo="usuario"
         :imgLink="usuario.photo"
         :linkTo="'/perfilusuario/'"
         :botonName="Perfil"
       />
-      <div class="container">
-        <div class="btn-group d-flex justify-content-center"></div>
+
+      <h1>Producto</h1>
+      <div class="container" v-if="producto">
+        <CartaModelo :modelo="producto" :imgLink="producto.images[0]" />
       </div>
 
+      <h1>Reviews</h1>
       <div class="container" v-for="review in reviews" :key="review._id">
         <CartaModelo
           :modelo="review"
           :imgLink="review.user.photo"
           :userName="true"
         />
-        <a> {{ review._id }}</a>
+      </div>
+      <div class="container">
+        <div class="btn-group d-flex justify-content-center"></div>
       </div>
     </ul>
   </div>
