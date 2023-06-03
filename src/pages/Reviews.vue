@@ -14,7 +14,18 @@
         <CartaModelo :modelo="producto" :imgLink="producto.images[0]" />
       </div>
 
+
+      <div class="imagen-container">
+      <div v-for="imagen in producto.images" :key="imagen">
+  <img :src="imagen" alt="Imagen del producto"  class="producto-imagen">
+</div>
+</div>
+
+
+
+
       <h1>Reviews</h1>
+      <p style="text-align: center;"> cantidad de reviews hechas es de {{reviews.length}} </p>
       <div class="container" v-for="review in reviews" :key="review._id">
         <CartaModelo
           :modelo="review"
@@ -45,7 +56,9 @@ export default {
   },
   data() {
     return {
-      producto: null,
+      producto: {
+        images:[]
+      },
       reviews: [],
       usuario: [],
     };
@@ -73,4 +86,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.imagen-container {
+  display: flex;
+  justify-content: center;
+}
+
+.producto-imagen {
+  width: 200px;
+  height: 200px;
+  margin: 0 100px;
+  border-radius: 20px;
+  border: 2px solid grey;
+  margin-bottom: 100px;
+  margin-top: 100px;
+}
+
+.producto-imagen {
+    transition: transform 0.3s;
+  }
+
+  .producto-imagen:hover {
+    transform: scale(1.5);
+  }
+
+
+</style>

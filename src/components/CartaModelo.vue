@@ -3,10 +3,14 @@
     <div class="card" >
 
     <div class="images">
-              <img :src="`${imgLink}`" class="card-img-top"  alt="Foto" />
+              <img :src="`${imgLink}`" class="card-img-top s"  alt="Foto" />
     </div>
     <div class="card-body">
+
+    <div v-if="modelo.createdAt">
     <h6 class="card-subtitle mb-2 text-muted">{{ new Date(modelo.createdAt).toLocaleDateString() }}</h6>
+    </div>
+    
     <div v-if="!userName">
     <h5 class="card-title">{{ modelo.name }}</h5>
     </div>
@@ -71,10 +75,22 @@ export default {
   flex-direction: row;
   margin-top: 30px; 
   margin-bottom: 30px;
+  
 }
 .card img {
   width: 80%;
   height: 200px;
   border-radius: 20px;
 }
+.card-img-top{
+  border: 2px solid grey;
+}
+
+.card-img-top {
+    transition: transform 0.3s;
+  }
+
+  .card-img-top:hover {
+    transform: scale(1.2);
+  }
 </style>
