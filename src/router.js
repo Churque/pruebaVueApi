@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import PajarosDetalles from './pages/Pajaros';
 import Home from './pages/Images';
 import Reviews from './pages/Reviews'
+import perfilUsuario from './pages/perfilUsuario'
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     name: 'Reviews',
     path: '/Reviews/:id',
     component: Reviews,
+    props : true,
+  },
+  {
+    name: 'Perfil',
+    path: '/perfilusuario/:id',
+    component: perfilUsuario,
     props : true,
   },
 ];

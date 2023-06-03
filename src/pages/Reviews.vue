@@ -2,10 +2,7 @@
   <div>
     <ul>
       <div class="container" v-if="producto">
-        <a> {{ producto.name }}</a>
-        <a> {{ producto.description }}</a>
-        <a> {{ producto.price }}</a>
-        <a type="Date"> {{ producto.createdAt }}</a>
+        <CartaProducto :producto="producto" />
         <div
           id="carouselExampleSlidesOnly"
           class="carousel slide"
@@ -21,9 +18,22 @@
 
       <div class="container" v-for="review in reviews" :key="review._id">
         <a> {{ review._id }}</a>
-        <div class="btn-group d-flex justify-content-center">
-          <p>Nombre Reviewer: {{ review.user.name }}</p>
-          <p>Review: {{ review }}</p>
+        <div class="card" style="width: 18rem">
+          <img
+            width="200"
+            height="200"
+            :src="review.user.photo"
+            alt="Producto"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Nombre Reviewer: {{ review.user.name }}</h5>
+            <p class="card-text">{{ review.review }}</p>
+            <div class="d-flex custom-centered">
+          <div class="btn-group d-flex justify-content-center">
+            <router-link :to="`/perfilusuario/${review.user._id}`" class="btn btn-sm btn-outline-secondary"> Ver Habilidades</router-link>
+          </div>
+        </div>
+          </div>
         </div>
       </div>
     </ul>
@@ -32,8 +42,12 @@
 
 <script>
 import axios from "axios";
+import CartaProducto from "../components/CartaProducto.vue";
 
 export default {
+  components: {
+    CartaProducto,
+  },
   props: {
     id: {
       type: Number,
@@ -74,7 +88,6 @@ export default {
         .catch((error) => {
           console.error(error);
         });
-      console.log(this.reviews);
     },
   },
 };
