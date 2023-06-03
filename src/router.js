@@ -5,6 +5,7 @@ import Home from './pages/Images';
 import Reviews from './pages/Reviews'
 import perfilUsuario from './pages/perfilUsuario'
 
+
 const routes = [
   {
     name: 'pajaros_details',

@@ -1,25 +1,26 @@
 <template>
   <div class="container">
-    <img :src="`${usuario.photo}`" />
-    <h1>{{ usuario.name }}</h1>
-    <h1>{{ usuario.city }}</h1>
-    <h1>{{ usuario.bio }}</h1>
+
+    <CartaModelo :modelo="usuario"  :imgLink="usuario.photo"></CartaModelo>
   </div>
 
-  <p> cantidad de reviews hechas por {{usuario.name}} es de {{reviews.length}} </p>
+  <p style="text-align: center;"> cantidad de reviews hechas por {{usuario.name}} es de {{reviews.length}} </p>
+  
   <div v-for="review in reviews" :key="review._id">
+    <CartaModelo :modelo="review"  :imgLink="review.product.images[0]"></CartaModelo>
     <h1>{{ review.product.name }}</h1>
-    <div v-for="image in review.product.images" :key="image">
-      <img width="200" height="200" :src="image" alt="" />
-    </div>
     <p> {{review.review}}</p>
   </div>
+
 </template>
 
 <script>
 import axios from "axios";
-
+import CartaModelo from "../components/CartaModelo.vue";
 export default {
+  components:{
+      CartaModelo,
+    },
   props: {
     id: {
       type: Number,

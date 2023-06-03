@@ -2,39 +2,25 @@
   <div>
     <ul>
       <div class="container" v-if="producto">
-        <CartaProducto :producto="producto" />
-        <div
-          id="carouselExampleSlidesOnly"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="images" v-for="image in producto.images" :key="image">
-              <img :src="image" alt="Producto" />
-            </div>
-          </div>
-        </div>
+        <CartaModelo :modelo="producto" :imgLink="producto.images[0]" />
+      </div>
+      <CartaModelo
+        :modelo="usuario"
+        :imgLink="usuario.photo"
+        :linkTo="'/perfilusuario/'"
+        :botonName="Perfil"
+      />
+      <div class="container">
+        <div class="btn-group d-flex justify-content-center"></div>
       </div>
 
       <div class="container" v-for="review in reviews" :key="review._id">
+        <CartaModelo
+          :modelo="review"
+          :imgLink="review.user.photo"
+          :userName="true"
+        />
         <a> {{ review._id }}</a>
-        <div class="card" style="width: 18rem">
-          <img
-            width="200"
-            height="200"
-            :src="review.user.photo"
-            alt="Producto"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Nombre Reviewer: {{ review.user.name }}</h5>
-            <p class="card-text">{{ review.review }}</p>
-            <div class="d-flex custom-centered">
-          <div class="btn-group d-flex justify-content-center">
-            <router-link :to="`/perfilusuario/${review.user._id}`" class="btn btn-sm btn-outline-secondary"> Ver Habilidades</router-link>
-          </div>
-        </div>
-          </div>
-        </div>
       </div>
     </ul>
   </div>
@@ -42,11 +28,11 @@
 
 <script>
 import axios from "axios";
-import CartaProducto from "../components/CartaProducto.vue";
+import CartaModelo from "../components/CartaModelo.vue";
 
 export default {
   components: {
-    CartaProducto,
+    CartaModelo,
   },
   props: {
     id: {
@@ -58,6 +44,7 @@ export default {
     return {
       producto: null,
       reviews: [],
+      usuario: [],
     };
   },
   mounted() {
@@ -66,29 +53,18 @@ export default {
   },
 
   methods: {
-    /*
-    fetchData() {
-      axios
-        .get("http://54.163.208.73:8080/products")
-        .then((result) => {
-          this.productos = result.data;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    },
-    */
     conseguirIdProduct() {
       axios
         .get(`http://54.163.208.73:8080/products/${this.id}/reviews`)
         .then((result) => {
           this.producto = result.data.product;
           this.reviews = result.data.reviews;
+          this.usuario = result.data.product.user;
         })
         .catch((error) => {
           console.error(error);
         });
-      console.log(this.reviews);
+      console.log(this.usuario);
     },
   },
 };
