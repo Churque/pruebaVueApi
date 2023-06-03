@@ -25,8 +25,9 @@
     <div v-if="modelo.city">
     <p class="card-text mb-2 text-muted">{{ modelo.city }}</p>
     </div>
-
-    <h5 class="card-subtitle text-primary">{{ modelo.price }}</h5>
+    <div v-if="modelo.price"> 
+    <h5 class="card-subtitle text-primary">${{ modelo.price }}</h5>
+    </div>
     <div v-if="linkTo">
     <button class="btn btn-outline-info">
               <RouterLink :to="`${linkTo}${modelo._id}`">Detalle</RouterLink>
