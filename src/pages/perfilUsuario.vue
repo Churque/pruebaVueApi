@@ -4,7 +4,7 @@
     <CartaModelo :modelo="usuario"  :imgLink="usuario.photo"></CartaModelo>
   </div>
 
-  <p style="text-align: center;"> cantidad de reviews hechas por {{usuario.name}} es de {{reviews.length}} </p>
+  <p style="text-align: center;"> Cantidad de reviews hechas por {{usuario.name}} es de {{reviews.length}} </p>
   
   <div v-for="review in reviews" :key="review._id">
     <h4>{{ review.product.name }}</h4>
@@ -51,4 +51,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -18,16 +18,16 @@
     <h5 class="card-title">{{ modelo.user.name }}</h5>
     </div>
     <div v-if="modelo.description">
-    <p class="card-text mb-2 text-muted">{{ modelo.description }}</p>
+    <p class="card-text mb-2 ">{{ modelo.description }}</p>
     </div>
     <div v-if="modelo.bio">
-    <p class="card-text mb-2 text-muted">{{ modelo.bio }}</p>
+    <p class="card-text mb-2 ">{{ modelo.bio }}</p>
     </div>
     <div v-if="modelo.review">
-    <p class="card-text mb-2 text-muted">{{ modelo.review }}</p>
+    <p class="card-text mb-2 ">{{ modelo.review }}</p>
     </div>
     <div v-if="modelo.city">
-    <p class="card-text mb-2 text-muted">{{ modelo.city }}</p>
+    <p class="card-text mb-2 ">{{ modelo.city }}</p>
     </div>
     <div v-if="modelo.price"> 
     <h5 class="card-subtitle text-primary">${{ modelo.price }}</h5>
@@ -71,10 +71,23 @@ export default {
 </script>
 <style>
 
+.btn {
+  margin-top: 20px;
+ 
+}
+
 .card {
   flex-direction: row;
   margin-top: 30px; 
   margin-bottom: 30px;
+
+  background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+
   
 }
 .card img {
@@ -82,9 +95,7 @@ export default {
   height: 200px;
   border-radius: 20px;
 }
-.card-img-top{
-  border: 2px solid grey;
-}
+
 
 .card-img-top {
     transition: transform 0.3s;

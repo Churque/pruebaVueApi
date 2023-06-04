@@ -22,5 +22,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
+  background: linear-gradient(to right, rgb(255, 81, 0), rgb(132, 0, 255));
+  
 }
+html {
+  background: linear-gradient(to right, rgb(255, 81, 0), rgb(132, 0, 255));
+  background-size: cover;
+}
+
+
+
 </style>

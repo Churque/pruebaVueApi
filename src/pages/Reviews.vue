@@ -2,30 +2,24 @@
   <div>
     <ul>
       <h1>Autor publicacion</h1>
+      <div class="usuario-container">
       <CartaModelo
         :modelo="usuario"
         :imgLink="usuario.photo"
         :linkTo="'/perfilusuario/'"
         :botonName="Perfil"
       />
+    </div>
 
       <h1>Producto</h1>
       <div class="container" v-if="producto">
         <CartaModelo :modelo="producto" :imgLink="producto.images[0]" />
       </div>
 
-
-      <div class="imagen-container">
-      <div v-for="imagen in producto.images" :key="imagen">
-  <img :src="imagen" alt="Imagen del producto"  class="producto-imagen">
-</div>
-</div>
-
-
-
+      <ImagenesFila :modelo="producto"></ImagenesFila>
 
       <h1>Reviews</h1>
-      <p style="text-align: center;"> cantidad de reviews hechas es de {{reviews.length}} </p>
+      <p style="text-align: center;"> Cantidad de reviews hechas es de {{reviews.length}} </p>
       <div class="container" v-for="review in reviews" :key="review._id">
         <CartaModelo
           :modelo="review"
@@ -43,10 +37,11 @@
 <script>
 import axios from "axios";
 import CartaModelo from "../components/CartaModelo.vue";
-
+import ImagenesFila from "@/components/ImagenesFila.vue";
 export default {
   components: {
     CartaModelo,
+    ImagenesFila,
   },
   props: {
     id: {
@@ -87,28 +82,10 @@ export default {
 </script>
 
 <style>
-.imagen-container {
+
+.usuario-container{
+  width:80%;
   display: flex;
   justify-content: center;
 }
-
-.producto-imagen {
-  width: 200px;
-  height: 200px;
-  margin: 0 100px;
-  border-radius: 20px;
-  border: 2px solid grey;
-  margin-bottom: 100px;
-  margin-top: 100px;
-}
-
-.producto-imagen {
-    transition: transform 0.3s;
-  }
-
-  .producto-imagen:hover {
-    transform: scale(1.5);
-  }
-
-
 </style>
