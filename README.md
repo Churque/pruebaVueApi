@@ -1,3 +1,8 @@
+#Claudio Churque
+#Javier Ortega
+
+
+
 # proyecto_vue_m
 
 ## Project setup
