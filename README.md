@@ -1,9 +1,9 @@
-#Claudio Churque
-#Javier Ortega
-
-
 
 # proyecto_vue_m
+
+# Claudio Churque
+
+# Javier Ortega
 
 ## Project setup
 ```
